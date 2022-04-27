@@ -23,25 +23,35 @@ public class Pic {
                 double white = Math.max(red / 255.0, prewhite);
                 double black = 1.0 - white;
                 if (black < white) picture.set(i, j, Color.WHITE);
-                if (black > white) picture.set(i, j, Color.BLACK);
+                if (black >= white) picture.set(i, j, Color.BLACK);
             }
         }
         return picture;
     }
 
     public static void main(String[] args) {
-        Picture test = new Picture("Test2.jpg");
+        Picture test = new Picture("Naim.jpg");
         int height = test.height();
         int width = test.width();
         StdOut.print(height + " " + width);
         StdDraw.setCanvasSize(width, height);
         StdDraw.setXscale(-width / 2, width / 2);
         StdDraw.setYscale(-height / 2, height / 2);
-        StdDraw.picture(0, 0, "Test2.jpg");
+        StdDraw.picture(0, 0, "Naim.jpg");
         StdDraw.show();
         Pic transform = new Pic(test);
         Picture transformed = transform.Contrast();
-        transformed.save("Transformed.jpg");
-        StdDraw.picture(0, 0, "Transformed.jpg");
+        transformed.save("transformedNaim.jpg");
+        StdDraw.picture(0, 0, "transformedNaim.jpg");
+        Picture andrewSuj = new Picture("AndrewSujay.jpg");
+        int height2 = andrewSuj.height();
+        int width2 = andrewSuj.width();
+        Pic transform2 = new Pic(andrewSuj);
+        Picture transformed2 = transform2.Contrast();
+        transformed2.save("transformedAndrewSuj.jpg");
+        StdDraw.setCanvasSize(width2, height2);
+        StdDraw.setXscale(-width2 / 2, width2 / 2);
+        StdDraw.setYscale(-height2 / 2, height2 / 2);
+        StdDraw.picture(0, 0, "transformedAndrewSuj.jpg");
     }
 }
