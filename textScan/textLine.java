@@ -15,7 +15,8 @@ public class textLine {
         int widthOrig = image.width();
         int heightOrig = image.width();
         int widthFinal = 0;
-        int
+        int heigthFinal = 0;
+
         for (int h = 0; h < heightOrig; h++) {
             for (int w = 0; w < widthOrig; w++) {
 

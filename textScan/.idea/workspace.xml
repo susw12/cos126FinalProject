@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/checkstyle-cos126.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/checkstyle-lift.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/checkstyle-suppressions.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/introcs.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/spotbugs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/stdlib.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/COS 126.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/textLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COS 126.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COS 126.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/textLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +77,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sujay/Desktop/Sujay School/Princeton/Freshman Year/Second Semester/COS 126/cos126_repo/s22-pe2&quot;
+  }
+}</component>
+>>>>>>> Stashed changes
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -96,7 +99,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650736345709</updated>
-      <workItem from="1650736346925" duration="2703000" />
+      <workItem from="1650736346925" duration="4643000" />
+      <workItem from="1650940325475" duration="57000" />
+      <workItem from="1650940394382" duration="595000" />
     </task>
     <servers />
   </component>
