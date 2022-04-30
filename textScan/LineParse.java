@@ -92,16 +92,16 @@ public class LineParse {
 
 
     public static void main(String[] args) {
-        Picture andrewSuj = new Picture("transformedAndrewSuj.jpg");
-        LineParse andrewSujParse = new LineParse(andrewSuj);
-        Queue<Picture> lines = andrewSujParse.preSeparateLines();
+        Picture AndrewSuj = new Picture("AndrewSujay.jpg");
+        Pic AndrewSujay = new Pic(AndrewSuj);
+        Picture ContrastAndrewSujay = AndrewSujay.Contrast();
+        ContrastAndrewSujay.save("AndrewSujayContrast.jpg");
+        LineParse AndrewSujayParse = new LineParse(ContrastAndrewSujay);
+        Queue<Picture> lines = AndrewSujayParse.preSeparateLines();
         Queue<Picture> processedLines = LineParse.SeparateLines(lines);
+        StdOut.print(processedLines.length());
         Picture a = processedLines.dequeue();
-        a.save("processedLine1.jpg");
-        Picture b = processedLines.dequeue();
-        b.save("processedLine2.jpg");
-        Picture c = processedLines.dequeue();
-        c.save("processedLine3.jpg");
+        a.save("AndrewSujayContrastLine1.jpg");
     }
 }
 
