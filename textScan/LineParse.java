@@ -5,7 +5,7 @@ public class LineParse {
     private int height; // height of original text picture
     private Picture fullText; // image of full contrasted text
 
-    private LineParse(Picture a) {
+    public LineParse(Picture a) {
         fullText = a;
         height = a.height();
         width = a.width();
