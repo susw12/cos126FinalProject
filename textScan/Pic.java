@@ -4,7 +4,7 @@ public class Pic {
     private Picture b; // creates instance variable picture
 
     // initializes instance variable b to equal picture a (input picture)
-    private Pic(Picture a) {
+    public Pic(Picture a) {
         b = a;
     }
 
