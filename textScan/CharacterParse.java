@@ -67,11 +67,11 @@ public class CharacterParse {
         Queue<Picture> precharacters = new Queue<Picture>();
         for (int i = 0; i < width; i++) {
             // Character detected - THIS WORKS (GIVES THE PROPER NUMBER OF CHARACTERS)
-            if (colinfo[i] == true) {
+            if (colinfo[i]) {
                 for (int j = i; j < width; j++) {
-                    if (colinfo[j] == true) continue;
+                    if (colinfo[j]) continue;
                     // Character end detected
-                    if (colinfo[j] == false) {
+                    if (!colinfo[j]) {
                         Picture character = new Picture(j - i, height);
                         for (int m = 0; m < character.height(); m++) {
                             for (int n = 0; n < character.width(); n++) {
@@ -86,11 +86,11 @@ public class CharacterParse {
                 }
             }
             // Space detected - THIS WORKS (GIVES THE PROPER NUMBER OF SPACES)
-            if (colinfo[i] != true) {
+            if (!colinfo[i]) {
                 int count = 0;
                 for (int j = i; j < width; j++) {
                     // Gives space between characters
-                    if ((count < 20) && (colinfo[j + 1] == true)) {
+                    if ((count < 20) && (colinfo[j + 1])) {
                         i += (j - i);
                         break;
                     }
@@ -127,12 +127,26 @@ public class CharacterParse {
         return characters;
     }
 
+    public static double[] extractFeatures(Picture picture) {
+        int width = picture.width();
+        int height = picture.height();
+        int totalPixels =  width * height;
+        double[] pixels = new double[totalPixels];
+        int currentPos = 0;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                pixels[currentPos] = picture.get(x, y).getRed();
+                currentPos++;
+            }
+        }
 
+        return pixels;
+    }
     public static void main(String[] args) {
-        Picture AndrewSuj = new Picture("AndrewSujay.jpg");
+        Picture AndrewSuj = new Picture(args[1]);
         Pic AndrewSujay = new Pic(AndrewSuj);
         Picture ContrastAndrewSujay = AndrewSujay.Contrast();
-        ContrastAndrewSujay.save("AndrewSujayContrast.jpg");
+        // ContrastAndrewSujay.save("AndrewSujayContrast.jpg");
         LineParse AndrewSujayParse = new LineParse(ContrastAndrewSujay);
         Queue<Picture> lines = AndrewSujayParse.preSeparateLines();
         Queue<Picture> processedLines = LineParse.SeparateLines(lines);
@@ -140,12 +154,50 @@ public class CharacterParse {
         CharacterParse charactersdata = new CharacterParse(line1);
         Queue<Picture> characters = charactersdata.characters();
         StdOut.println(characters.length());
+        /*
         int count = 0;
         while (!characters.isEmpty()) {
             Picture character = characters.dequeue();
             character.save("character" + count + ".jpg");
             count++;
         }
+         */
 
+        In trainingFile = new In(args[0]);
+
+        int classNumber = trainingFile.readInt();
+        int width = trainingFile.readInt();
+        int height = trainingFile.readInt();
+        MultiPerceptron classer = new MultiPerceptron(classNumber, width*height);
+
+        while (!trainingFile.isEmpty()) {
+            String fileName = trainingFile.readString();
+            Picture file = new Picture(fileName);
+            int label = trainingFile.readInt();
+            double[] fileProcessed = extractFeatures(file);
+            classer.trainMulti(fileProcessed, label);
+        }
+
+        int classNumberTest = testingFile.readInt();
+        int widthTest = testingFile.readInt();
+        int heightTest = testingFile.readInt();
+        int failedTests = 0;
+        int totalTests = 0;
+
+        while (!testingFile.isEmpty()) {
+            totalTests++;
+            String fileName = testingFile.readString();
+            Picture file = new Picture(fileName);
+            int label = testingFile.readInt();
+            double[] fileProcessed = extractFeatures(file);
+            int outputLabel = classer.predictMulti(fileProcessed);
+            if (outputLabel != label) {
+                failedTests++;
+                System.out.println(fileName + ", label = " +
+                                           label + ", predict = " + outputLabel);
+            }
+        }
+        double errorRate = (double) failedTests/totalTests;
+        System.out.println("test error rate = " + errorRate);
     }
 }
