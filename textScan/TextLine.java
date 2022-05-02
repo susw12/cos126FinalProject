@@ -33,4 +33,8 @@ public class TextLine {
         }
         return colInfo;
     }
+
+    public Picture getLetter(int start, int end) {
+        Picture letter = image.
+    }
 }
