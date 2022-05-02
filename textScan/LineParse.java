@@ -99,9 +99,9 @@ public class LineParse {
         LineParse AndrewSujayParse = new LineParse(ContrastAndrewSujay);
         Queue<Picture> lines = AndrewSujayParse.preSeparateLines();
         Queue<Picture> processedLines = LineParse.SeparateLines(lines);
-        StdOut.print(processedLines.length());
-        Picture a = processedLines.dequeue();
-        a.save("AndrewSujayContrastLine1.jpg");
+        StdOut.println(processedLines.length());
+        Picture line1 = processedLines.dequeue();
+        line1.save("line1.jpg");
     }
 }
 
