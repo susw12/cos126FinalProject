@@ -24,7 +24,7 @@ public class CharacterParse {
         return false;
     }
 
-    public static Picture crop(Picture character) {
+    public static Picture vertCrop(Picture character) {
         int wide = character.width();
         int high = character.height();
         int startheight = 0;
@@ -119,7 +119,7 @@ public class CharacterParse {
             Picture character = precharacters.dequeue();
             boolean containsBlack = CharacterParse.characterWithBlack(character);
             if (containsBlack) {
-                Picture croppedCharacter = CharacterParse.crop(character);
+                Picture croppedCharacter = CharacterParse.vertCrop(character);
                 characters.enqueue(croppedCharacter);
             }
             else characters.enqueue(character);
@@ -134,16 +134,25 @@ public class CharacterParse {
         Picture ContrastAndrewSujay = AndrewSujay.Contrast();
         ContrastAndrewSujay.save("AndrewSujayContrast.jpg");
         LineParse AndrewSujayParse = new LineParse(ContrastAndrewSujay);
+
+        // Hi my name is Andrew.
+        // Hi my name is Sujay.
         Queue<Picture> lines = AndrewSujayParse.preSeparateLines();
         Queue<Picture> processedLines = LineParse.SeparateLines(lines);
+
+        // Hi my name is Andrew
         Picture line1 = processedLines.dequeue();
+
+        // Creates characterParse data type
         CharacterParse charactersdata = new CharacterParse(line1);
+        // Separates characters in line
         Queue<Picture> characters = charactersdata.characters();
         StdOut.println(characters.length());
         int count = 0;
         while (!characters.isEmpty()) {
             Picture character = characters.dequeue();
             character.save("character" + count + ".jpg");
+            StdOut.println(character.height() + " " + character.width());
             count++;
         }
 
