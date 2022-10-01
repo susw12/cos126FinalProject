@@ -49,8 +49,8 @@ public class ImageClassifier {
             Picture file = new Picture(fileName);
             int label = testingFile.readInt();
             double[] fileProcessed = extractFeatures(file);
-            int outputLabel = classer.predictMulti(fileProcessed);
-            if (outputLabel != label) {
+            int outLabel = classer.predictMulti(fileProcessed);
+            if (outLabel != label) {
                 failedTests++;
                 System.out.println(fileName + ", label = " +
                                            label + ", predict = " + outputLabel);
